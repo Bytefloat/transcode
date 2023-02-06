@@ -1,0 +1,59 @@
+name: 'Continuous Integration'
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.ts'
+      - '**.js'
+      - '**.json'
+      - '**.lock'
+      - '.github/workflows/ci.yml'
+  pull_request:
+    paths:
+      - '**.ts'
+      - '**.js'
+      - '**.json'
+      - '**.lock'
+      - '.github/workflows/ci.yml'
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+        node: [ '18' ]
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Setup Node ${{ matrix.node }}
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm i --ignore-scripts --no-frozen-lockfile
+
+      - name: Prettier Format Check
+        run: pnpm run format:check
+
+      - name: ESLint Check
+        run: pnpm run lint
+
+      - name: Build
+        run: pnpm run build
