@@ -60,7 +60,7 @@ const Home: NextPage = () => {
 
         <div className="mt-2">
           <a
-            href="https://twitter.com/intent/tweet/?text=Transcode%20help%20you%20translate%20from%20and%20into%20any%20programming%20language.&url=https%3A%2F%2Fbyteflo.at/transcode"
+            href="https://twitter.com/intent/tweet/?text=Transcode%20help%20you%20translate%20from%20and%20into%20any%20programming%20language.&url=https%3A%2F%2Ftranscode.byteflo.at/"
             target="_blank"
             className="inline-flex items-center px-5 py-2.5 text-center text-sm font-medium text-[#1da1f2] hover:opacity-80"
             rel="noreferrer"
