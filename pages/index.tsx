@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Translate from "@/components/Translate";
 import { FADE_DOWN_ANIMATION_VARIANTS } from "@/lib/constants";
 import { slogan } from "@/lib/utils";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   return (
@@ -87,6 +88,20 @@ const Home: NextPage = () => {
         <hr className="border-1 h-px bg-gray-700 dark:bg-gray-700" />
       </main>
 
+      <div className="flex justify-center p-5 text-center">
+        <Link
+          href="https://www.producthunt.com/posts/transcode?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-transcode"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img
+            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=378428&theme=light"
+            alt="Transcode - Translate&#0032;from&#0032;and&#0032;into&#0032;any&#0032;programming&#0032;language&#0046; | Product Hunt"
+            width="250"
+            height="54"
+          />
+        </Link>
+      </div>
       <Footer />
     </>
   );
