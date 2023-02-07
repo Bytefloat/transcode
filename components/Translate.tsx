@@ -125,7 +125,7 @@ const Translate = () => {
                     <textarea
                       value={code}
                       onChange={handleInputChange}
-                      className="text-blak custom-scrollbar w-full
+                      className="text-blak custom-scrollbar w-full h-40
                         resize-none text-base focus:outline-none
                         lg:text-sm"
                       spellCheck="false"
